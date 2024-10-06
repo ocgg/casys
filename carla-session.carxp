@@ -1,0 +1,129 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE CARLA-PROJECT>
+<CARLA-PROJECT VERSION='2.5'>
+ <EngineSettings>
+  <ForceStereo>true</ForceStereo>
+  <PreferPluginBridges>false</PreferPluginBridges>
+  <PreferUiBridges>true</PreferUiBridges>
+  <UIsAlwaysOnTop>false</UIsAlwaysOnTop>
+  <MaxParameters>200</MaxParameters>
+  <UIBridgesTimeout>4000</UIBridgesTimeout>
+ </EngineSettings>
+
+ <Transport>
+  <BeatsPerMinute>120</BeatsPerMinute>
+ </Transport>
+
+ <!-- Baxandall -->
+ <Plugin>
+  <Info>
+   <Type>VST2</Type>
+   <Name>Baxandall</Name>
+   <Binary>/usr/lib64/vst/Baxandall.so</Binary>
+   <UniqueID>1650554977</UniqueID>
+  </Info>
+
+  <Data>
+   <Active>Yes</Active>
+   <ControlChannel>1</ControlChannel>
+   <Options>0x9</Options>
+
+   <Parameter>
+    <Index>0</Index>
+    <Name>Treble</Name>
+    <MidiChannel>11</MidiChannel>
+    <MappedControlIndex>2</MappedControlIndex>
+    <MappedMinimum>0</MappedMinimum>
+    <MappedMaximum>1</MappedMaximum>
+    <MidiCC>2</MidiCC>
+   </Parameter>
+
+   <Parameter>
+    <Index>1</Index>
+    <Name>Bass</Name>
+    <MidiChannel>11</MidiChannel>
+    <MappedControlIndex>1</MappedControlIndex>
+    <MappedMinimum>0</MappedMinimum>
+    <MappedMaximum>1</MappedMaximum>
+    <MidiCC>1</MidiCC>
+   </Parameter>
+
+   <Parameter>
+    <Index>2</Index>
+    <Name>Output</Name>
+    <MidiChannel>11</MidiChannel>
+    <MappedControlIndex>3</MappedControlIndex>
+    <MappedMinimum>0</MappedMinimum>
+    <MappedMaximum>1</MappedMaximum>
+    <MidiCC>3</MidiCC>
+   </Parameter>
+
+   <CustomData>
+    <Type>http://kxstudio.sf.net/ns/carla/property</Type>
+    <Key>CarlaSkinIsCompacted</Key>
+    <Value>false</Value>
+   </CustomData>
+
+   <Chunk>
+BAIBPwQCAT8EAgE/
+   </Chunk>
+  </Data>
+ </Plugin>
+
+ <ExternalPatchbay>
+  <Connection>
+   <Source>Carla:audio-out1</Source>
+   <Target>Babyface (23664962) Stéréo analogique:playback_FL</Target>
+  </Connection>
+  <Connection>
+   <Source>Carla:audio-out2</Source>
+   <Target>Babyface (23664962) Stéréo analogique:playback_FR</Target>
+  </Connection>
+  <Connection>
+   <Source>Firefox:output_FL</Source>
+   <Target>Casys Audio/Sink sink:playback_FL</Target>
+  </Connection>
+  <Connection>
+   <Source>Firefox:output_FR</Source>
+   <Target>Casys Audio/Sink sink:playback_FR</Target>
+  </Connection>
+  <Connection>
+   <Source>Casys Audio/Sink sink:monitor_FL</Source>
+   <Target>Carla:audio-in1</Target>
+  </Connection>
+  <Connection>
+   <Source>Casys Audio/Sink sink:monitor_FR</Source>
+   <Target>Carla:audio-in2</Target>
+  </Connection>
+  <Connection>
+   <Source>Midi-Bridge:X-TOUCH MINI 2:(capture_0) X-TOUCH MINI MIDI 1</Source>
+   <Target>Carla:events-in</Target>
+  </Connection>
+  <Positions>
+   <Position x1="742" y1="829">
+    <Name>Carla</Name>
+   </Position>
+   <Position x1="10" y1="494" x2="1078" y2="683">
+    <Name>Babyface (23664962) Stéréo analogique</Name>
+   </Position>
+   <Position x1="199" y1="414" x2="1012" y2="724">
+    <Name>Audio interne Stéréo analogique</Name>
+   </Position>
+   <Position x1="87" y1="758">
+    <Name>Firefox</Name>
+   </Position>
+   <Position x1="290" y1="763">
+    <Name>Casys Audio/Sink sink</Name>
+   </Position>
+   <Position x1="147" y1="328" x2="1025" y2="425">
+    <Name>Audio interne Stéréo numérique (IEC958)</Name>
+   </Position>
+   <Position x1="0" y1="997" x2="946" y2="1002">
+    <Name>Midi-Bridge</Name>
+   </Position>
+   <Position x1="224" y1="1143" x2="1117" y2="1138">
+    <Name>BLE MIDI 1</Name>
+   </Position>
+  </Positions>
+ </ExternalPatchbay>
+</CARLA-PROJECT>

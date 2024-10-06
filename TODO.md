@@ -1,0 +1,4 @@
+- Commentaires en anglais
+- Virer la dépendance à pulseaudio
+- Trouver autre chose que Carla pour mapper ce qu'on veut en midi learn
+- refacto quit()
