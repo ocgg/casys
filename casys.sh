@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# UTILITIES ###################################################################
+
 display_help() {
     echo "Usage: casys [OPTION]"
     echo "Launch Carla and configure audio routing for Casys."
@@ -114,7 +116,7 @@ SINK_NAME="Casys"
 CARLA_PID_TMP_FILENAME="carla_pid"
 SINK_ID_TMP_FILENAME="sink_id"
 OUTPUT_DEVICE=$(pactl get-default-sink)
-CASYS_DIR=~/code/casys
+CASYS_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 
 case $1 in
     "" | gui)                   run $1;;
