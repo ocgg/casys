@@ -12,12 +12,11 @@
 
 ## À propos <a name="about"></a>
 
-Le but est de pouvoir appliquer n'importe quel effet audio VST/LV2/... sur la sortie audio principale du système, et de pouvoir contrôler ces effets avec un contrôleur MIDI.
+Casys permet d'utiliser un contrôleur MIDI pour régler le son de l'ordinateur, en utilisant des plugins audio VST ou LV2.
 
-En d'autres termes : Casys permet d'utiliser un contrôleur MIDI pour régler l'audio de l'ordinateur, de la même manière que les réglages basse/aigus/volume d'une chaîne hifi par exemple, ou d'un bus de console de mixage.
+Le but est d'avoir une expérience similaire aux réglages basse/aigus/... d'une chaîne hifi par exemple, ou d'un bus de console de mixage, mais avec les effets de son choix.
 
-C'est un projet personnel sans aucune prétention : ça fonctionne pour moi à ce stade et ça me suffit.
-Testé uniquement sous Linux Fedora 40.
+C'est un projet personnel sans prétention, testé seulement sous Linux Fedora 40.
 
 ## Premiers pas <a name="getting_started"></a>
 
@@ -28,29 +27,21 @@ Casys consiste en seulement 2 éléments :
 
 ### Prérequis
 
-Note: Les dépendances à Pulseaudio et Jack ne sont pas vraiment utiles dans le cadre de Casys : elles sont là par facilité et parce que je n'y connaissais pas grand chose avant d'écrire ce script. Je travaillerais dans le futur à n'utiliser que Pipewire.
+- Avoir installé [Carla](https://github.com/falkTX/Carla), hôte pour plugin VST/VST3/LV2/LADSPA
+- Avoir installé [Jack](https://jackaudio.org/), serveur de son
+- Utiiser un serveur de son [Pipewire](https://www.pipewire.org/) avec [PulseAudio](https://www.freedesktop.org/wiki/Software/PulseAudio/) (pipewire-pulse)
 
-1. PulseAudio avec PipeWire
-
-Actuellement, le script utilise les commandes `pactl` et `pw-link`. Cela signifie qu'il ne peut fonctionner qu'avec [Pipewire](https://www.pipewire.org/) et un serveur de son [PulseAudio](https://www.freedesktop.org/wiki/Software/PulseAudio/) (pipewire-pulse), ce qui est le cas de nombreuses distributions Linux en 2024. Pour vérifier si c'est votre cas :
+Pour vérifier le dernier point:
 
 ```bash
 pactl info | grep -i pipe
+
+# Devrait afficher: Server Name: PulseAudio (on PipeWire 1.x.x)
 ```
 
-Si cette commande retourne `Server Name: PulseAudio (on PipeWire 1.x.x)`, c'est bon.
-
-2. [Carla](https://github.com/falkTX/Carla)
-
-Casys utilise [Carla](https://github.com/falkTX/Carla) en tant qu'hôte pour les plugins audio.
-
-Vous devez donc l'avoir installé sur votre système, ainsi que des plugins compatibles que Carla peut prendre en charge (VST, VST3, LV2...).
-
-3. [Jack](https://jackaudio.org/)
-
-Carla utilise [Jack](https://jackaudio.org/) par défaut, dans l'état actuel du script il faut l'avoir installé.
-
 ## Configuration <a name="config"></a>
+
+Carla doit être configuré pour utiliser le serveur de son Jack.
 
 Avant d'exécuter le script, il faut configurer le fichier de session de Carla pour reconnaître les messages MIDI provenant du contrôleur et mettre en place les plugins audio.
 
@@ -71,7 +62,7 @@ Pour lancer Casys, exécutez le fichier `casys.sh`.
 ./casys.sh
 ```
 
-Pour quitter Casys, ajouter la commande `stop` (ou `quit` ou `exit` ou `kill`)
+Pour arrêter Casys, ajouter la commande `stop` (ou `quit` ou `exit` ou `kill`)
 
 ```bash
 ./casys.sh stop
@@ -82,3 +73,4 @@ Pour quitter Casys, ajouter la commande `stop` (ou `quit` ou `exit` ou `kill`)
 - Le MIDI learn de Carla ne prend en charge que les messages MIDI de type control change. Il est actuellement impossible de mapper un message de type note nativement.
 - **Utiliser des plugins stéréo** et de bonne qualité : rappelez-vous que tous les sons du système sont affectés.
 - Pour une utilisation basique de type "aigu/basse de chaîne hifi", je vous conseille le plugin gratuit [baxandall](https://www.airwindows.com/baxandall/) de l'excellent [airwindows](https://www.airwindows.com/).
+- Les dépendances à Jack et PulseAudio sont à priori inutiles et ne sont là que par facilité parce que je n'y connaissais pas grand chose en écrivant ce script. Un jour peut-être, je travaillerais à m'en passer.
