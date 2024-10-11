@@ -1,4 +1,9 @@
-- Commentaires en anglais
 - Virer la dépendance à pulseaudio
+  - garder Jack dans un premier temps
+  - trouver les équivalent de `pactl` de pipewire ou jack
+- Faire un systemd pour lancer/stopper le truc
+- Checks avant de lancer le truc
+  - Vérifier qu'un controller MIDI est branché (choisir dans une liste ?)
+  - Vérifier qu'un serveur PW/Jack tourne
 - Trouver autre chose que Carla pour mapper ce qu'on veut en midi learn
 - refacto quit()
